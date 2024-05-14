@@ -13,6 +13,8 @@ const removedKeys = [
   "lcwRecordInfo",
   "sessionId",
   "studyId",
+  "consent",
+  "lcwSurvey-1-0: consent",
 ];
 // const neededKeys = [];
 const neededKeys = [
@@ -25,9 +27,17 @@ const neededKeys = [
   "runRecords4",
   "submitRecords3",
   "submitRecords4",
+  "screener-prolific",
+  "screener-current-job",
+  "screener-programming-experience-obj",
+  "screener-language-proficiency-obj",
+  "screener-programming-experience-sub",
+  "screener-language-proficiency-sub",
+  "attitudes-general",
+  "perceived-difficulty",
 ];
-const coding1Num = "3-0: ";
-const coding2Num = "4-0: ";
+const coding1Num = "coding1";
+const coding2Num = "coding2";
 
 const fs = require("fs");
 const { parse } = require("csv-parse/sync");
@@ -62,7 +72,7 @@ function checkLeaveFullScreen(leaves) {
   let freq = 0;
   let duration = 0;
   for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (obj.hasOwnProperty(key) && (key === "3" || key === "4")) {
       freq += obj[key][0];
       duration += obj[key][1];
     }
@@ -70,6 +80,20 @@ function checkLeaveFullScreen(leaves) {
   if (freq > 2 || duration > 2) {
     return "YES";
   } else return "";
+}
+
+// calculate attitudes
+function fearAndAcceptance(obj) {
+  let fear =
+    (Number(obj["I fear AI code generation system"]) +
+      Number(obj["AI will destroy humankind"]) +
+      Number(obj["AI code generation system will cause many job losses"])) /
+    3;
+  let acceptance =
+    (Number(obj["I trust AI code generation system"]) +
+      Number(obj["AI code generation system will benefit programmers"])) /
+    2;
+  return { fear: fear, acceptance: acceptance };
 }
 
 // Function to read existing CSV data and convert it back to JSON
@@ -81,14 +105,61 @@ function readCSVtoJSON(filePath) {
   return parse(csvContent, { columns: true, skip_empty_lines: true });
 }
 
+function transferLikertResponse(response) {
+  const map = {
+    "Not experienced at all": 1,
+    "Slightly experienced": 2,
+    "Moderately experienced": 3,
+    "Very experienced": 4,
+    "Extremely experienced": 5,
+
+    "Not familiar at all": 1,
+    "Slightly familiar": 2,
+    "Moderately familiar": 3,
+    "Very familiar": 4,
+    "Extremely familiar": 5,
+
+    "Not proficient at all": 1,
+    "Slightly proficient": 2,
+    "Moderately proficient": 3,
+    "Very proficient": 4,
+    "Extremely proficient": 5,
+
+    "Extremely easy": 1,
+    "Somewhat Easy": 2,
+    "Neither easy nor difficult": 3,
+    "Somewhat difficult": 4,
+    "Extremely difficult": 5,
+  };
+  if (typeof response === "string" && map[response]) {
+    return map[response];
+  } else {
+    return response;
+  }
+}
+
 // Function to update and write to the CSV
 function updateCSV(filePath, newJsonData, removedKeys) {
   let existingRecords = readCSVtoJSON(filePath);
 
-  // remove unnecessary keys
-  removedKeys.forEach((key) => delete newJsonData[key]);
+  // remove all 'lcwSurvey-x-y: ' in keys
+  // remove the value of the two coding questions in the csv
+  for (const key in newJsonData) {
+    if (!newJsonData.hasOwnProperty(key)) continue;
+    if (key.includes("lcwSurvey-")) {
+      newJsonData[key.slice(15)] = transferLikertResponse(
+        JSON.parse(JSON.stringify(newJsonData[key]))
+      );
+      delete newJsonData[key];
+    }
+  }
 
-  // keep needed keys
+  // remove unnecessary keys
+  removedKeys.forEach((key) => {
+    delete newJsonData[key];
+  });
+
+  // keep needed keys, and rename
   let coding1KeyName = ""; // get coding key in advance
   let coding2KeyName = "";
   if (neededKeys.length > 0) {
@@ -96,21 +167,18 @@ function updateCSV(filePath, newJsonData, removedKeys) {
       if (!newJsonData.hasOwnProperty(key)) continue;
       if (!neededKeys.includes(key)) {
         if (key.includes(coding1Num)) {
-          coding1KeyName = key.slice(10);
+          coding1KeyName = key;
         } else if (key.includes(coding2Num)) {
-          coding2KeyName = key.slice(10);
+          coding2KeyName = key;
         } else delete newJsonData[key];
+      } else {
+        if (key === "attitudes-general") {
+          const attitudes = fearAndAcceptance(JSON.parse(newJsonData[key]));
+          newJsonData["attitudes-fear"] = attitudes["fear"];
+          newJsonData["attitudes-acceptance"] = attitudes["acceptance"];
+          delete newJsonData[key];
+        }
       }
-    }
-  }
-
-  // remove all 'lcwSurvey-' in keys
-  // remove the value of the two coding questions in the csv
-  for (const key in newJsonData) {
-    if (!newJsonData.hasOwnProperty(key)) continue;
-    if (key.includes("lcwSurvey-")) {
-      newJsonData[key.slice(10)] = JSON.parse(JSON.stringify(newJsonData[key]));
-      delete newJsonData[key];
     }
   }
 
@@ -145,7 +213,10 @@ function updateCSV(filePath, newJsonData, removedKeys) {
   console.log(coding1KeyName, coding2KeyName);
 
   // record JPlag
-  const jplagSimObj = readJplagSimilarity(newJsonData["prolificId"]);
+  const jplagSimObj = readJplagSimilarity(
+    newJsonData["prolificId"],
+    newJsonData["questionSet"]
+  );
   newJsonData["JPlag_P_Sim"] = jplagSimObj["JPlag_P_Sim"];
   newJsonData["JPlag_AI_Sim"] = jplagSimObj["JPlag_AI_Sim"];
 

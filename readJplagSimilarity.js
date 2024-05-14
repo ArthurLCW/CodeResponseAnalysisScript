@@ -1,17 +1,21 @@
 const fs = require("fs");
 const path = require("path");
 
-// Directory containing the JSON files
-const directoryPath = path.join(__dirname, "similarity_records");
+// Base directory containing the JSON files
+const baseDirectoryPath = path.join(__dirname, "similarity_records");
 
 /**
- * Searches JSON files in a specified directory that contain a given ID in their filenames.
- * Reads and returns the 'first_similarity' value from the JSON content synchronously.
+ * Searches JSON files in a specified subdirectory of 'similarity_records' that contain a given ID in their filenames.
+ * Reads and returns the 'first_similarity' and 'second_similarity' values from the JSON content synchronously, adjusting based on which ID represents 'ai'.
  *
  * @param {string} id The ID to search for in the filenames.
+ * @param {string} questionSet The subdirectory name under the main directory where files are located.
  * @returns {Object} An object containing similarity data.
  */
-function readJplagSimilarity(id) {
+function readJplagSimilarity(id, questionSet) {
+  // Construct the path to the specific questionSet directory
+  const directoryPath = path.join(baseDirectoryPath, questionSet);
+
   // Read directory for JSON files synchronously
   const files = fs.readdirSync(directoryPath);
 
@@ -44,10 +48,7 @@ function readJplagSimilarity(id) {
     return {};
   }
 }
-
-// console.log("before");
-// const result = readJplagSimilarity("5db9a74d4a8687000b9ef833");
-// console.log(result);
-// console.log("after");
-
+console.log(
+  readJplagSimilarity("5c093a3f600aff0001d7002c", "easy_ransom_notes")
+);
 module.exports = readJplagSimilarity;
