@@ -17,7 +17,7 @@ function writeToFile(filePath, content) {
     }
 
     fs.writeFileSync(filePath, content);
-    console.log("File written successfully: ", filePath);
+    // console.log("File written successfully: ", filePath);
   } catch (error) {
     console.error("Failed to write file:", error);
   }

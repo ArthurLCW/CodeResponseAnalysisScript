@@ -105,6 +105,19 @@ function readCSVtoJSON(filePath) {
   return parse(csvContent, { columns: true, skip_empty_lines: true });
 }
 
+function isInvalid(questionSet, id) {
+  let filePath = "./invalidResponse.json";
+  try {
+    // Read file synchronously
+    const data = fs.readFileSync(filePath, "utf8");
+    // Parse the file data as JSON
+    return !!JSON.parse(data)[questionSet].includes(id);
+  } catch (err) {
+    console.error("Error reading or parsing the JSON file:", err);
+    throw err; // Re-throw the error for further handling if necessary
+  }
+}
+
 function transferLikertResponse(response) {
   const map = {
     "Not experienced at all": 1,
@@ -165,6 +178,10 @@ function updateCSV(filePath, newJsonData, removedKeys) {
   if (neededKeys.length > 0) {
     for (const key in newJsonData) {
       if (!newJsonData.hasOwnProperty(key)) continue;
+      // get if this data is invalid
+      if (isInvalid(newJsonData["questionSet"], newJsonData["prolificId"])) {
+        newJsonData["invalid"] = "true";
+      }
       if (!neededKeys.includes(key)) {
         if (key.includes(coding1Num)) {
           coding1KeyName = key;

@@ -39,6 +39,7 @@ fs.readFile(jsonFileName, "utf8", (err, data) => {
           continue;
 
         // read participant's data
+        console.log(projectKey, batchKey, participantKey);
         const participant = batch[participantKey];
         let code1Key = "lcwSurvey-3-0: " + participant["taskFile"].slice(0, -3); // remove ".md"
         let code2Key =
@@ -50,7 +51,7 @@ fs.readFile(jsonFileName, "utf8", (err, data) => {
         combinedCode += `${code1}\n\n`;
         combinedCode += `// ${code2Key}:\n`;
         combinedCode += `${code2}\n\n`;
-        console.log(projectKey, batchKey, participantKey);
+        // console.log(projectKey, batchKey, participantKey);
       }
     }
   }

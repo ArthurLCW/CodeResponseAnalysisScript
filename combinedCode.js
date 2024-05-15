@@ -1028,6 +1028,39 @@ let magazineLetters = {};
 
 };
 
+// Code for participant 60ef2e52a188d9859f92bb58 in formal_easy_ransom_notes_without of batch 2
+// lcwSurvey-3-0: coding1-easy-ransom-notes:
+/**
+* @param {string} ransomNote
+* @param {string} magazine
+* @return {boolean}
+*/
+var canConstruct = function(ransomNote, magazine) {
+  
+}; for(let ransomNote = 'a', magazine = 'b')[]
+
+
+// lcwSurvey-4-0: coding2-easy_ransom_notes-without:
+/**
+* @param {string} ransomNote
+* @param {string} magazine
+* @return {boolean}
+*/
+var canConstruct = function(ransomNote, magazine) {
+  
+}; for(let ransomNote = 'a', magazine = 'b')
+for(let b of magazine) = b
+if(magazine[b] === undefined) {
+  magazineletters[b] = 1;
+} else {
+  magazineletters[b]++;
+
+}
+
+for (let letter of ransomNote)  {
+  if (!magazineletters)
+}
+
 // Code for participant 6114ba817968537bd89ef3c6 in formal_easy_ransom_notes_without of batch 2
 // lcwSurvey-3-0: coding1-easy-ransom-notes:
 /**
@@ -1847,6 +1880,69 @@ var deleteDuplicates = function(head) {
   
 };
 
+// Code for participant 5c3d5129a9bfb4000168e299 in formal_easy_remove_duplicates_with of batch 2
+// lcwSurvey-3-0: coding1-easy-remove-duplicates-from-sorted-list:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function(head) {
+  // error handling
+  if(!arr || arr.length === 0){
+    return [];
+  }
+
+  let result = [];
+  for(let i = 0; i < head.length; i++){
+    if(head[i] !== head[i + 1]){
+      return [1];
+      result.push(head[i]);
+    }
+  }
+  return result;
+};
+
+// lcwSurvey-4-0: coding2-easy_remove_duplicates-with:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function(head) {
+ if (!head) return head;
+    
+  // Initialize current node as head of the list
+  let current = head;
+
+  // Loop until current node is not null
+  while (current !== null && current.next !== null) {
+    // If current node's value is the same as the next node's value
+    if (current.val === current.next.val) {
+      // Skip the next node (remove it from the list)
+      current.next = current.next.next;
+    } else {
+      // Move to the next node
+      current = current.next;
+    }
+  }
+
+  // Return the modified list
+  return head;
+};
+
 // Code for participant 5cabf58293e29a0016018c30 in formal_easy_remove_duplicates_with of batch 2
 // lcwSurvey-3-0: coding1-easy-remove-duplicates-from-sorted-list:
 /**
@@ -2116,6 +2212,65 @@ var deleteDuplicates = function(head) {
   }
 }
 return head;
+};
+
+// Code for participant 616ae04c674bd9a88c6ebed0 in formal_easy_remove_duplicates_with of batch 2
+// lcwSurvey-3-0: coding1-easy-remove-duplicates-from-sorted-list:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function(head) {
+  if (!head || !head.next){
+    return head;
+  }
+  let curr = head;
+  while (curr.next){
+    if(curr.val === curr.next.val){
+      curr.next = curr.next.next;
+    }else{
+      curr = curr.next;
+    }
+  }
+
+  return head;
+  
+};
+
+// lcwSurvey-4-0: coding2-easy_remove_duplicates-with:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function(head) {
+  if (!head || !head.next){
+    return head;
+  }
+  let curr = head;
+  while (curr.next){
+    if(curr.val === curr.next.val){
+      curr.next = curr.next.next;
+    }else{
+      curr = curr.next;
+    }
+  }
+
+  return head;
+  
 };
 
 // Code for participant 6558c7f10f613d860aab3125 in formal_easy_remove_duplicates_with of batch 2
@@ -2703,6 +2858,55 @@ var deleteDuplicates = function(head) {
     return head;
 };
 
+// Code for participant 5fbaf990efe4a5bcf223f9d7 in formal_easy_remove_duplicates_without of batch 2
+// lcwSurvey-3-0: coding1-easy-remove-duplicates-from-sorted-list:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function(head) {
+  let max = 100
+  let min = 1
+let output = "1.2"[
+  if out = "1,2" : input = max;
+]
+};
+
+// lcwSurvey-4-0: coding2-easy_remove_duplicates-without:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function (head) {
+  if (!head) return head;
+  
+  let current = head;
+
+  while (current !== null && current.next !== null) {
+    if (current.val === current.next.val) {
+      current.next = current.next.next;
+    } else {
+      current = current.next;
+    }
+  }
+
+  return head;
+};
+
 // Code for participant 60cdfc43f84c4e243fb375d8 in formal_easy_remove_duplicates_without of batch 2
 // lcwSurvey-3-0: coding1-easy-remove-duplicates-from-sorted-list:
 /**
@@ -2854,6 +3058,56 @@ var deleteDuplicates = function(head) {
         }
     }
     return head
+};
+
+// Code for participant 613024a95f48b6ceaeee8ad5 in formal_easy_remove_duplicates_without of batch 2
+// lcwSurvey-3-0: coding1-easy-remove-duplicates-from-sorted-list:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function(head) {
+  for(Head a: head){
+    if(a.equals(head)){
+      list.remove(a);
+    }
+
+  }
+};
+
+// lcwSurvey-4-0: coding2-easy_remove_duplicates-without:
+/**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.next = (next===undefined ? null : next)
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var deleteDuplicates = function(head) {
+  if (!head) return head;
+  
+  let current = head;
+
+  while (current !== null && current.next !== null) {
+    if (current.val === current.next.val) {
+      current.next = current.next.next;
+    } else {
+      current = current.next;
+    }
+  }
+
+  return head;
 };
 
 // Code for participant 6159e83b6407a6d5345d3b99 in formal_easy_remove_duplicates_without of batch 2
@@ -3474,6 +3728,61 @@ var longestValidParentheses = function(s) {
   }
 
   return length;
+};
+
+// Code for participant 5ff743fd88a5713bd0d00583 in formal_hard_longest_valid_parenthesis_with of batch 2
+// lcwSurvey-3-0: coding1-hard-longest-valid-parenthesis:
+/**
+* @param {string} s
+* @return {number}
+*/
+var longestValidParentheses = function(s) {
+  let stack = [-1]
+  let maxLength = 0;
+  for(let i = 0; i < s.length; i++)
+  {
+    if(s[i]==='('){
+      stack.push(i);
+    }
+    else{
+      stack.pop();
+      if(stack.length===0)
+      {
+        stack.push(1);
+      }
+      else{
+        maxLength = Math.max(maxLength, i - stack[stack.length -1]);
+      }
+    }
+    return maxLength;
+  }
+};
+
+// lcwSurvey-4-0: coding2-hard_longest_valid_parenthesis-with:
+/**
+* @param {string} s
+* @return {number}
+*/
+var longestValidParentheses = function(s) {
+  let stack = [-1];
+  let maxLength = 0;
+  for(let i = 0; i < s.length; i++)
+  {
+    if(s[i] === '('){
+      stack.push(i);
+    }
+    else{
+      stack.pop();
+      if(stack.length === 0)
+      {
+        stack.push(i);
+      }
+      else{
+        maxLength = Math.max(maxLength, i-stack[stack.length - 1]);
+      }
+    }
+    return maxLength;
+  }
 };
 
 // Code for participant 60fd528cbd7f31e9b838efa5 in formal_hard_longest_valid_parenthesis_with of batch 2
@@ -4163,6 +4472,23 @@ var longestValidParentheses = function(s) {
   }
 };
 
+// Code for participant 61534f4f798d79e4758e04bf in formal_hard_longest_valid_parenthesis_without of batch 2
+// lcwSurvey-3-0: coding1-hard-longest-valid-parenthesis:
+S = "(()())"
+output = 4
+s=  "()()"
+var longestValidParentheses = function(s) {
+  
+};
+
+// lcwSurvey-4-0: coding2-hard_longest_valid_parenthesis-without:
+S = "(()())"
+output = 2
+s=  ""
+var longestValidParentheses = function(s) {
+  
+};
+
 // Code for participant 62d81f26161631255f0d36bd in formal_hard_longest_valid_parenthesis_without of batch 2
 // lcwSurvey-3-0: coding1-hard-longest-valid-parenthesis:
 /**
@@ -4266,6 +4592,45 @@ var longestValidParentheses = function(s) {
   return Math.max(longest, current);
 };
 
+
+// Code for participant 656ee9f847e7cb2f69ca0b62 in formal_hard_longest_valid_parenthesis_without of batch 2
+// lcwSurvey-3-0: coding1-hard-longest-valid-parenthesis:
+/**
+* @param {string} s
+* @return {number}
+*/
+var longestValidParentheses = function(s) {
+  
+  default longestValidParentheses(s:str)
+  stack = [-1]
+  max_length = 0)
+
+  for i in Range(len(s)):
+  if s[i]
+};
+
+// lcwSurvey-4-0: coding2-hard_longest_valid_parenthesis-without:
+/**
+* @param {string} s
+* @return {number}
+*/
+var longestValidParentheses = function(s) {
+  
+  default longestValidParentheses(s:str)
+  stack = [-1]
+  max_length = 0)
+
+  for i in Range(len(s)):
+  if s[i] == '()':
+  else: 
+    stack.pop()
+    if not stack:
+      stack.append(i)
+     else:
+      max_length = max_length, i - stack[-1]
+
+      return max_length
+};
 
 // Code for participant 66171378a0d58cc04011f002 in formal_hard_longest_valid_parenthesis_without of batch 2
 // lcwSurvey-3-0: coding1-hard-longest-valid-parenthesis:
@@ -4861,6 +5226,51 @@ var findTheWinner = function (n, k) {
   return queue[0];
 };
 
+// Code for participant 6129091a4488538bc7654940 in formal_medium_find_winner_with of batch 2
+// lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+    let friends = [];
+    for (let i = 1; i <= n; i++) {
+        friends.push(i);
+    }
+    
+    let index = 0;
+    while (friends.length > 1) {
+        index = (index + k - 1) % friends.length;
+        friends.splice(index, 1);
+    }
+    
+    return friends[0];
+};
+
+// lcwSurvey-4-0: coding2-medium_find_winner-with:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+    let friends = [];
+    for (let i = 1; i <= n; i++) {
+        friends.push(i);
+    }
+    
+    let index = 0;
+    while (friends.length > 1) {
+        for (let count = 1; count < k; count++) {
+            friends.push(friends.shift());
+        }
+        friends.shift();
+    }
+    
+    return friends[0];
+};
+
 // Code for participant 614d519458658326e237eaa7 in formal_medium_find_winner_with of batch 2
 // lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
 pseudocode/**
@@ -5405,6 +5815,48 @@ var findTheWinner = function 4
 var findTheWinner = function 4
 };18
 
+// Code for participant 60e75e7f069a9a811800b74a in formal_medium_find_winner_without of batch 2
+// lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+  
+}default find_winner(n, k)
+winnner = 0
+for i in Range(1, n + 1) :
+winner = (winner + k) % i]
+
+// lcwSurvey-4-0: coding2-medium_find_winner-without:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var findTheWinner = function (n, k) {
+  let queue = [];
+  for (let i = 1; i <= n; i++) {
+    queue.push(i);
+  }
+
+  while (queue.length > 1) {
+    for (let count = 1; count < k; count++) {
+      queue.push(queue.shift());
+    }
+    queue.shift();
+  }
+
+  return queue[0];
+};
+
+
 // Code for participant 61092f01d8c20f8e9e784549 in formal_medium_find_winner_without of batch 2
 // lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
 /**
@@ -5449,6 +5901,54 @@ var findTheWinner = function(n, k) {
 
   return current.val
 };
+
+// Code for participant 6112750106250f3a55d1e28d in formal_medium_find_winner_without of batch 2
+// lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+  let friends = Array.from({length: n}, (_, i) => i + 1);
+  let currentIndex = 0;
+
+  while (friends.length > 1) {
+    currentIndex = (currentIndex + k - 1) % friends.length;
+    friends.splice(currentIndex, 1);
+  }
+
+  return friends[0];
+ let n = 5;
+  let k = 2;
+  let winner = function(n, k)
+  
+}
+ 
+
+// lcwSurvey-4-0: coding2-medium_find_winner-without:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+  let friends = [];
+  for(let i = 1; i <= n; i++) {
+    friends.push(i)
+  }
+
+  while (friends.length > 1) {
+    for(let count = 1; count < k; count++) {
+      friends.push(friends.shift());
+    }
+    friends.shift();
+  }
+
+  return friends[0];
+  
+};
+ 
 
 // Code for participant 6120eb44c9cb47c287219598 in formal_medium_find_winner_without of batch 2
 // lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
@@ -5555,6 +6055,33 @@ var findTheWinner = function(n, k) {
  findTheWinner = function(n, k)
  findTheWinner = function(n, k) findTheWinner = function(n, k)
 
+// Code for participant 658056367b094e578caa1eba in formal_medium_find_winner_without of batch 2
+// lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+  
+};n<=< k 
+pseudocode.
+& empty
+
+// lcwSurvey-4-0: coding2-medium_find_winner-without:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+  
+};n<=< k 
+pseudocode.
+&empty
+(n=1; n<;n++)
+
+
 // Code for participant 65c19fc3a0cb3e89054d3eae in formal_medium_find_winner_without of batch 2
 // lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
 2k1n1
@@ -5576,6 +6103,47 @@ var findTheWinner = function(n, k) {
 */
 var findTheWinner = function(n, k) {
   
+};
+
+// Code for participant 6611da82eccdd337a7ce65ee in formal_medium_find_winner_without of batch 2
+// lcwSurvey-3-0: coding1-medium-find-the-winner-of-the-circular-game:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function(n, k) {
+    let i = 0;
+    let friends = Array.from({length: n}, (_, i) => i + 1);
+
+    while (friends.length > 1) {
+        i = (i + k - 1) % friends.length; 
+        friends.splice(i, 1); 
+    }
+
+    return friends[0]; 
+};
+
+// lcwSurvey-4-0: coding2-medium_find_winner-without:
+/**
+* @param {number} n
+* @param {number} k
+* @return {number}
+*/
+var findTheWinner = function (n, k) {
+  let queue = [];
+  for (let i = 1; i <= n; i++) {
+    queue.push(i);
+  }
+
+  while (queue.length > 1) {
+    for (let count = 1; count < k; count++) {
+      queue.push(queue.shift());
+    }
+    queue.shift();
+  }
+
+  return queue[0];
 };
 
 // Code for participant 6623e8345875c239fcd2bd9e in formal_medium_find_winner_without of batch 2
@@ -6018,6 +6586,79 @@ var isValidBST = function(root) {
 
 
 
+// Code for participant 612681578c97326c99eb14d3 in formal_medium_validate_BST_with of batch 2
+// lcwSurvey-3-0: coding1-medium-validate-binary-search-tree:
+/**
+* Definition for a binary tree node.
+* function TreeNode(val, left, right) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.left = (left===undefined ? null : left)
+*   this.right = (right===undefined ? null : right)
+* }
+*/
+/**
+  * @param {TreeNode} root
+  * @return {boolean}
+*/
+var isValidBST = function(root) {
+   function inorderTraversal(node, prev) {
+        if (node === null) {
+            return true;
+        }
+        if (!inorderTraversal(node.left, prev)) {
+            return false;
+        }
+        
+        if (node.val <= prev[0]) {
+            return false;
+        }
+        prev[0] = node.val;
+
+        return inorderTraversal(node.right, prev);
+    }
+
+    const prev = [Number.MIN_SAFE_INTEGER];
+    return inorderTraversal(root, prev);
+
+  
+};
+
+// lcwSurvey-4-0: coding2-medium_validate_BST-with:
+/**
+* Definition for a binary tree node.
+* function TreeNode(val, left, right) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.left = (left===undefined ? null : left)
+*   this.right = (right===undefined ? null : right)
+* }
+*/
+/**
+  * @param {TreeNode} root
+  * @return {boolean}
+*/
+var isValidBST = function(root) {
+   function inorderTraversal(node, prev) {
+        if (node === null) {
+            return true;
+        }
+        if (!inorderTraversal(node.left, prev)) {
+            return false;
+        }
+        
+        if (node.val <= prev[0]) {
+            return false;
+        }
+        prev[0] = node.val;
+
+        return inorderTraversal(node.right, prev);
+    }
+
+    const prev = [Number.MIN_SAFE_INTEGER];
+    return inorderTraversal(root, prev);
+
+  
+};
+
 // Code for participant 614d519458658326e237eaa7 in formal_medium_validate_BST_with of batch 2
 // lcwSurvey-3-0: coding1-medium-validate-binary-search-tree:
 function isValitBST(roo)/**
@@ -6052,6 +6693,73 @@ function isValitBST(roo)/** {function helper} (node, min, max)
 var isValidBST = function(root) {
   
 };
+
+// Code for participant 6156b68cc77b48d6693b361c in formal_medium_validate_BST_with of batch 2
+// lcwSurvey-3-0: coding1-medium-validate-binary-search-tree:
+// Definition for a binary tree node.
+function TreeNode(val, left, right) {
+  this.val = (val === undefined ? 0 : val)
+  this.left = (left === undefined ? null : left)
+  this.right = (right === undefined ? null : right)
+}
+
+/**
+  * @param {TreeNode} root
+  * @return {boolean}
+*/
+
+
+var isValidBST = function(root) {
+  const checkValid = (node, min, max) => {
+    if(!node) {
+      return true
+    }
+
+    if(node.val <= min || node.val >= max) {
+      return false
+    }
+
+    return checkValid(node.left, min, node.val) && helper(node.right, node.val, max)
+  }
+
+  return checkValid(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER)
+}
+
+
+console.log(isValidBST([2, 1, 3]))
+
+// lcwSurvey-4-0: coding2-medium_validate_BST-with:
+// Definition for a binary tree node.
+function TreeNode(val, left, right) {
+  this.val = (val === undefined ? 0 : val)
+  this.left = (left === undefined ? null : left)
+  this.right = (right === undefined ? null : right)
+}
+
+/**
+  * @param {TreeNode} root
+  * @return {boolean}
+*/
+
+// Check if the tree is a BST
+var isValidBST = function(root) {
+  const checkValid = (node, min, max) => {
+    if(!node) {
+      return true
+    }
+
+    if(node.val <= min || node.val >= max) {
+      return false
+    }
+
+    return checkValid(node.left, min, node.val) && checkValid(node.right, node.val, max)
+  }
+
+  return checkValid(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER)
+}
+
+
+isValidBST(TreeNode(2, 1, 3))
 
 // Code for participant 615b38fbee37c31346d21b1c in formal_medium_validate_BST_with of batch 2
 // lcwSurvey-3-0: coding1-medium-validate-binary-search-tree:
@@ -6343,6 +7051,41 @@ var isValidBST = function (root) {
 
   // Initially, there are no bounds on the root's value
   return validate(root, null, null);
+};
+
+// Code for participant 6607b72f1f6c683f9b1e62e8 in formal_medium_validate_BST_with of batch 2
+// lcwSurvey-3-0: coding1-medium-validate-binary-search-tree:
+pseudocode/**
+* Definition for a binary tree node.
+* function TreeNode(val, left, right) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.left = (left===undefined ? null : left)
+*   this.right = (right===undefined ? null : right)
+* }
+*/
+/**
+  * @param {TreeNode} root
+  * @return {boolean}
+*/
+var isValidBST = function(root) {
+  
+};
+
+// lcwSurvey-4-0: coding2-medium_validate_BST-with:
+pseudocode/**
+* Definition for a binary tree node.
+* function TreeNode(val, left, right) {
+*   this.val = (val===undefined ? 0 : val)
+*   this.left = (left===undefined ? null : left)
+*   this.right = (right===undefined ? null : right)
+* }
+*/
+/**
+  * @param {TreeNode} root
+  * @return {boolean}
+*/
+var isValidBST = function(root) {
+  
 };
 
 // Code for participant 66171378a0d58cc04011f002 in formal_medium_validate_BST_with of batch 2
