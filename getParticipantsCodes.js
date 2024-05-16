@@ -57,31 +57,23 @@ fs.readFile(jsonFileName, "utf8", (err, data) => {
 
         // read participant's data
         const participant = batch[participantKey];
+        if (
+          participant["lcwSurvey-1-0: consent"] ===
+          "No, I decline to participate in this study."
+        ) {
+          console.log(
+            "consent deny: ",
+            participant["prolificId"],
+            participant["batch"],
+            participant["project"]
+          );
+          continue;
+        }
         let code1Key = "lcwSurvey-3-0: " + participant["taskFile"].slice(0, -3); // remove ".md"
         let code2Key =
           "lcwSurvey-4-0: " + participant["lcwSurveyRandomMd"].slice(0, -3);
         let code1 = participant[code1Key].replace(/\\n/g, "\n");
         let code2 = participant[code2Key].replace(/\\n/g, "\n");
-        // writeToFile(
-        //   "codingTask1/" +
-        //     batchKey +
-        //     "/" +
-        //     projectKey +
-        //     "/" +
-        //     participantKey +
-        //     "/code.js",
-        //   code1
-        // );
-        // writeToFile(
-        //   "codingTask2/" +
-        //     batchKey +
-        //     "/" +
-        //     projectKey +
-        //     "/" +
-        //     participantKey +
-        //     "/code.js",
-        //   code2
-        // );
         writeToFile(
           "codingTask1/" +
             participant["taskFile"] +

@@ -180,7 +180,7 @@ function updateCSV(filePath, newJsonData, removedKeys) {
       if (!newJsonData.hasOwnProperty(key)) continue;
       // get if this data is invalid
       if (isInvalid(newJsonData["questionSet"], newJsonData["prolificId"])) {
-        newJsonData["invalid"] = "true";
+        newJsonData["invalid"] = "YES";
       }
       if (!neededKeys.includes(key)) {
         if (key.includes(coding1Num)) {

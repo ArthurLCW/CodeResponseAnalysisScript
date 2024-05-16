@@ -15,7 +15,7 @@ function filterCSV(inputFilePath, outputFilePath) {
   const stringifier = stringify({ header: true });
 
   parser.on("data", (row) => {
-    if (row.invalid !== "TRUE" && row.cheat !== "YES") {
+    if (row.invalid !== "YES" && row.cheat !== "YES") {
       stringifier.write(row);
     }
   });
