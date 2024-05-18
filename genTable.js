@@ -2,7 +2,7 @@
 // do not erase existing data, directly add data after the existing data
 
 // hyper-parameters
-const jsonFileName = "data.json";
+const jsonFileName = "rawdata.json";
 const csvFileName = "data.csv";
 const investigatedProject = undefined;
 const investigatedBatch = undefined;
@@ -35,6 +35,7 @@ const neededKeys = [
   "screener-language-proficiency-sub",
   "attitudes-general",
   "perceived-difficulty",
+  "post-test-comment",
 ];
 const coding1Num = "coding1";
 const coding2Num = "coding2";
@@ -267,6 +268,9 @@ fs.readFile(jsonFileName, "utf8", (err, data) => {
     console.error("Error reading the file:", err);
     return;
   }
+
+  // Empty the CSV file at the beginning
+  fs.writeFileSync(csvFileName, "");
 
   // Parse the JSON data
   const jsonData = JSON.parse(data);

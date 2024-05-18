@@ -2,7 +2,7 @@ const fs = require("fs");
 const { parse } = require("csv-parse");
 const { stringify } = require("csv-stringify");
 
-// Function to read and filter CSV data
+// Function to read and filter CSV data, then remove specific columns
 function filterCSV(inputFilePath, outputFilePath) {
   const input = fs.createReadStream(inputFilePath);
   const output = fs.createWriteStream(outputFilePath);
@@ -12,31 +12,51 @@ function filterCSV(inputFilePath, outputFilePath) {
       skip_empty_lines: true,
     })
   );
-  const stringifier = stringify({ header: true });
+
+  // Array to hold rows after filtering
+  let filteredData = [];
 
   parser.on("data", (row) => {
     if (row.invalid !== "YES" && row.cheat !== "YES") {
-      stringifier.write(row);
+      // Append the row to filteredData
+      filteredData.push(row);
     }
   });
 
   parser.on("end", () => {
-    console.log("CSV file has been processed and filtered.");
-    stringifier.end(); // Close the writable stream
+    // Remove unwanted columns from each row in filteredData
+    filteredData = filteredData.map((row) => {
+      delete row.invalid;
+      delete row.cheat;
+      delete row.leaveFullScreenTimes;
+      return row;
+    });
+
+    // Configure the stringifier to output without the removed columns
+    const stringifier = stringify({ header: true });
+    stringifier.on("error", (error) => {
+      console.error("Error during CSV stringifying:", error);
+    });
+
+    // Write the processed data to the output file
+    stringifier.pipe(output);
+
+    // Write each filtered and modified row to the stringifier
+    filteredData.forEach((row) => {
+      stringifier.write(row);
+    });
+
+    // Close the writable stream after all data has been written
+    stringifier.end();
+    console.log("CSV file has been processed, filtered, and columns removed.");
   });
 
   parser.on("error", (error) => {
     console.error("Error during CSV parsing:", error);
   });
-
-  stringifier.on("error", (error) => {
-    console.error("Error during CSV stringifying:", error);
-  });
-
-  stringifier.pipe(output); // Pipe the stringifier output to the output file stream
 }
 
 // Example usage
 const inputFilePath = "data.csv"; // Ensure the path is correct and file exists
-const outputFilePath = "data-deleted.csv";
+const outputFilePath = "data-filtered.csv";
 filterCSV(inputFilePath, outputFilePath);
