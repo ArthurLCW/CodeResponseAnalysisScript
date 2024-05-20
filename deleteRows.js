@@ -2,13 +2,15 @@ const fs = require("fs");
 const { parse } = require("csv-parse");
 const { stringify } = require("csv-stringify");
 
-// Function to read and filter CSV data, then remove specific columns
+// Function to read and filter CSV data, then modify specific aspects
 function filterCSV(inputFilePath, outputFilePath) {
   const input = fs.createReadStream(inputFilePath);
   const output = fs.createWriteStream(outputFilePath);
+
+  // Configure the parser with a custom function for handling column names
   const parser = input.pipe(
     parse({
-      columns: true,
+      columns: (header) => header.map((column) => column.replace(/-/g, "_")),
       skip_empty_lines: true,
     })
   );
@@ -48,7 +50,9 @@ function filterCSV(inputFilePath, outputFilePath) {
 
     // Close the writable stream after all data has been written
     stringifier.end();
-    console.log("CSV file has been processed, filtered, and columns removed.");
+    console.log(
+      "CSV file has been processed, filtered, columns removed, and column names modified."
+    );
   });
 
   parser.on("error", (error) => {

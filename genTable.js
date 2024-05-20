@@ -7,6 +7,20 @@ const csvFileName = "data.csv";
 const investigatedProject = undefined;
 const investigatedBatch = undefined;
 const investigatedParticipant = undefined;
+const domain_knowledge_obj = [
+  "domain-knowledge-HashMap-obj",
+  "domain-knowledge-LinkedList-obj",
+  "domain-knowledge-queue-obj",
+  "domain-knowledge-stack-obj",
+  "domain-knowledge-tree-obj",
+];
+const domain_knowledge_sub = [
+  "domain-knowledge-HashMap-sub",
+  "domain-knowledge-LinkedList-sub",
+  "domain-knowledge-queue-sub",
+  "domain-knowledge-stack-sub",
+  "domain-knowledge-tree-sub",
+];
 const removedKeys = [
   "currentPage",
   "initPageNum",
@@ -36,6 +50,8 @@ const neededKeys = [
   "attitudes-general",
   "perceived-difficulty",
   "post-test-comment",
+  ...domain_knowledge_sub,
+  ...domain_knowledge_obj,
 ];
 const coding1Num = "coding1";
 const coding2Num = "coding2";
@@ -166,6 +182,12 @@ function updateCSV(filePath, newJsonData, removedKeys) {
       );
       delete newJsonData[key];
     }
+    // add presence_of_comments
+    if (key === "project") {
+      newJsonData["presence_comments"] = newJsonData["project"]
+        .split("_")
+        .pop();
+    }
   }
 
   // remove unnecessary keys
@@ -194,6 +216,13 @@ function updateCSV(filePath, newJsonData, removedKeys) {
           const attitudes = fearAndAcceptance(JSON.parse(newJsonData[key]));
           newJsonData["attitudes-fear"] = attitudes["fear"];
           newJsonData["attitudes-acceptance"] = attitudes["acceptance"];
+          delete newJsonData[key];
+        }
+        if (domain_knowledge_sub.includes(key)) {
+          newJsonData["domain_knowledge_sub"] = newJsonData[key];
+          delete newJsonData[key];
+        } else if (domain_knowledge_obj.includes(key)) {
+          newJsonData["domain_knowledge_obj"] = newJsonData[key];
           delete newJsonData[key];
         }
       }
