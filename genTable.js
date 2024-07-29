@@ -41,7 +41,6 @@ const neededKeys = [
   "runRecords4",
   "submitRecords3",
   "submitRecords4",
-  "screener-prolific",
   "screener-current-job",
   "screener-programming-experience-obj",
   "screener-language-proficiency-obj",
@@ -52,6 +51,11 @@ const neededKeys = [
   "post-test-comment",
   ...domain_knowledge_sub,
   ...domain_knowledge_obj,
+  "screener-current-job",
+  "post-test-space-complexity",
+  "post-test-time-complexity",
+  "post-test-code-quality",
+  "post-test-comprehend",
 ];
 const coding1Num = "coding1";
 const coding2Num = "coding2";
@@ -168,6 +172,14 @@ function transferLikertResponse(response) {
   }
 }
 
+function transferObjDomainKnowledgeFamiliarity(response) {
+  if (response.includes("I have never heard of")) return 1;
+  else if (response.includes("but I have never used them")) return 2;
+  else if (response.includes("I have occasionally used")) return 3;
+  else if (response.includes("I regularly use")) return 4;
+  else return response;
+}
+
 // Function to update and write to the CSV
 function updateCSV(filePath, newJsonData, removedKeys) {
   let existingRecords = readCSVtoJSON(filePath);
@@ -222,7 +234,8 @@ function updateCSV(filePath, newJsonData, removedKeys) {
           newJsonData["domain_knowledge_sub"] = newJsonData[key];
           delete newJsonData[key];
         } else if (domain_knowledge_obj.includes(key)) {
-          newJsonData["domain_knowledge_obj"] = newJsonData[key];
+          newJsonData["domain_knowledge_obj"] =
+            transferObjDomainKnowledgeFamiliarity(newJsonData[key]);
           delete newJsonData[key];
         }
       }
