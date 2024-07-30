@@ -1,6 +1,6 @@
 // This file read the codes written by the participants, put their codes into a single file for Jplag processing
 // hyper-parameters
-const jsonFileName = "data.json";
+const jsonFileName = "rawData.json";
 const investigatedProject = undefined;
 const investigatedBatch = undefined;
 const investigatedParticipant = undefined;
