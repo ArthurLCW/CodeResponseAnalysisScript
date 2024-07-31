@@ -1,6 +1,6 @@
 ## Introduction
 
-This project consists of two parts: 
+This project preprocesses and analyzes the data used in the research 'Do Comments and Expertise Still Matter? A Controlled Experiment on Programmers’ Adoption of AI-Generated Code'. It consists of two parts: 
 
 1. Data Preprocessing:  Preprocess the raw data obtained from the Firebase Realtime Database. The scripts and raw data are presented in folder `\dataPreprocessing`. The scripts in the folder extract code written by participants, calculate the four types of code similarity metrics and trim the raw data from a JSON to a CSV file. 
 2. Data Analysis: Analyze the trimmed data after data preprocessing. Data analysis is conducted via SPSS. You may see the results in folder `\dataAnalysis`
