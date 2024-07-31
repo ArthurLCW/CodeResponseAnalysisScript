@@ -13,4 +13,9 @@ This project consists of two parts:
 4. If you want to view all participants' submitted codes in one single file, run `node .\concatenate.js`, and get all submitted codes in the file `combinedCodes.js`.
 5. You can review participants' submitted code and list the invalid responses in `invalidResponse.json`
 6. Run `.\codesProcess.bat` to calculate code similarity.
-7. Run `genTable` to get the processed raw data. The file `data-filtered.csv` is the CSV file that could be used for further analysis.
+7. Run `.\tableGeneration.bat` to get the processed raw data. The file `data-filtered.csv` is the CSV file that could be used for further analysis.
+
+## Data Analysis
+
+The file `rawData.sav` stores the data used in SPSS analysis. The file `Analysis.spv` stores the analysis results, including results of PCA analysis, Cronbach's alpha, and linear regression. 
+
